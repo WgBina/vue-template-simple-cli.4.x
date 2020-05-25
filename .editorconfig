@@ -10,9 +10,11 @@ insert_final_newline = true         # 文件末尾添加一个空行
 curly_bracket_next_line = false     # 大括号不另起一行
 spaces_around_operators = true      # 运算符两遍都有空格
 indent_brace_style = 1tbs           # 条件语句格式是 1tbs
+max_line_length = 160               # 每行最大长度
 
-[*.js]                              # 对所有的 js 文件生效
+[*.{js,vue,css}]                    # 对所有的 js 文件生效
 quote_type = single                 # 字符串使用单引号
 
-[*.{html,less,css,json}]            # 对所有 html, less, css, json 文件生效
+
+[*.{html,json}]                     # 对所有 html, less, css, json 文件生效
 quote_type = double                 # 字符串使用双引号
