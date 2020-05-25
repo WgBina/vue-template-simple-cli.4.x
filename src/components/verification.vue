@@ -1,7 +1,7 @@
 <template>
   <div class="ys-verification">
     <div class="input-wrapper" v-for="item in amount" :key="item">
-      <input  @paste="handlePaste" title="code" v-focus="(item - 1) === currentIndex" maxlength="1" @input="handleInput($event,(item-1))" @keydown.delete="onDelete($event,(item-1))"  v-model="code[item-1]">
+      <input  @paste="handlePaste" title="code" v-focus="(item - 1) === currentIndex" maxlength="2" @input="handleInput($event,(item-1))" @keydown.delete="onDelete($event,(item-1))"  v-model="code[item-1]">
     </div>
   </div>
 </template>
@@ -18,6 +18,7 @@ export default {
   directives: {
     focus: {
       componentUpdated: function (el, obj) {
+          console.log(el,obj)
         obj.value && el.focus()
       }
     }
@@ -27,12 +28,16 @@ export default {
   },
   methods: {
     handleInput (e, index) {
+        console.log(e)
+    console.log(this.code[index - 1])
+
       this.currentIndex = index
-      e.target.value = this.validateNumber(e.target.value,index)
+      e.target.value = this.validateNumber(e.data,index)
       e.target.value !== '' && ++this.currentIndex
       !this.code.includes('') && this.$emit('onCompleted', this.code.join(''))
     },
     onDelete (e, index) {
+        // console.log(e.path[0].focus())
       if (e.target.value === '') {
         this.currentIndex = index - 1
       }
