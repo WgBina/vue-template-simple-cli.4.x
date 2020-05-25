@@ -37,8 +37,8 @@ export default {
         this.currentIndex = index - 1
       }
     },
-    validateNumber (val) {
-        // this.code.splice(idx,1,val.replace(/\D/g, ''))
+    validateNumber (val,idx) {
+        this.code.splice(idx,1,val.replace(/\D/g, ''))
         console.log(val.replace(/\D/g, ''))
       return val.replace(/\D/g, '')
     },
