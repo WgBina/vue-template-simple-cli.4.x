@@ -1,11 +1,8 @@
 import axios from 'axios'
-import baseURL from '../api/baseUrl'
-import { Message } from 'element-ui'
 
 // create an axios instance
 const service = axios.create({
   // baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
-  baseURL: baseURL
   // withCredentials: true, // send cookies when cross-domain requests
   // timeout: 50000 // request timeout
 })
@@ -44,11 +41,11 @@ service.interceptors.response.use(
   },
   error => {
     console.log('err' + error) // for debug
-    Message({
-      message: error.message,
-      type: 'error',
-      duration: 5 * 1000
-    })
+    // Message({
+    //   message: error.message,
+    //   type: 'error',
+    //   duration: 5 * 1000
+    // })
     return Promise.reject(error)
   }
 )
