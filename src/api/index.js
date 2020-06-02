@@ -1,14 +1,10 @@
 import http from './http'
 
-const baseUrl = 'https://dht.colourdata.com.cn/hood_smile/'
+const baseUrl = 'http://139.198.0.141:9999/BudweiserStorm'; //测试开发
 
 export default {
-    async login(params) {
-        return await http.post(`${baseUrl}api/weChatLogin/login`,params)
-    },
+    async check(params) {
+        return await http.post(`${baseUrl}/s/tml/getBasicInfo.do`,params);
+    }
+};
 
-
-    async register(params) {
-        return await http.post(`${baseUrl}register`,params)
-    },
-}

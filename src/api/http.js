@@ -1,6 +1,10 @@
-// import axios from 'axios';
+import axios from 'axios';
 import ElementUI from 'element-ui';
-import axios from '@/utils/request';
+import qs from 'qs';
+//通用变量
+let childEventId = '756d3a31-2b26-495c-baaf-0e538a6f1b11';
+let belong = 'SUMSUNG20';
+const status = 0;
 // url 接口
 // params  参数  get key=value  post 对象形式
 // ifHideTit 是否隐藏提示有值表示隐藏
@@ -88,11 +92,16 @@ async function postBlob(url, params = {}, ifHideTit) {
 }
 
 async function post(url, params = {}, ifHideTit) {
+    //通用变量
+    params.childEventId = childEventId;
+    params.belong = belong;
+
     return new Promise(resolve => {
         let resData = {
             success: false,
             errorMsg: '',
-            data: []
+            data: [],
+            code: -100
         };
         if (!url) {
             resData.errorMsg = '请输入接口!';
@@ -100,9 +109,9 @@ async function post(url, params = {}, ifHideTit) {
             resolve(resData);
             return;
         }
-        axios.post(url, params).then(
+        axios.post(url, qs.stringify(params)).then(
             res => {
-                if (res.data.status == 100) {
+                if (res.data.code == status) {
                     resData.success = true;
                     resData.data = res.data.data || [];
                 } else {
@@ -111,9 +120,12 @@ async function post(url, params = {}, ifHideTit) {
                         ElementUI.Message.warning(resData.errorMsg);
                     }
                 }
+                //提供返回的code，给予更多的判断可能
+                resData.code = res.data.code;
                 resolve(resData);
             },
             err => {
+                console.log(err);
                 resData.errorMsg = '服务器出小差了！';
                 if (!ifHideTit) {
                     ElementUI.Message.error(resData.errorMsg);
