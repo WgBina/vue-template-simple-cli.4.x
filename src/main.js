@@ -13,6 +13,15 @@ import router from './router'
 
 import './permission' // permission control
 
+import HTTP from '@/api';
+import mai from './utils/dictionary.js';
+
+Vue.prototype.$HTTP = HTTP;//赋值使用
+//全局埋点方法
+Vue.prototype.$mai = mai.mai
+Vue.prototype.$maiVisit = mai.maiVisit
+
+
 Vue.use(Element)
 
 Vue.config.productionTip = false
