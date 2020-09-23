@@ -22,33 +22,33 @@ const router = new Router({
             path: '/',
             name: 'Layout',
             component: Layout,
-            redirect: '/test1',
+            redirect: '/dashboard',
             meta: { title: 'head1', icon: 'link' },
             children: [
                 {
-                    path: 'test1',
-                    component: () => import('@/views/test1'),
-                    name: 'test1',
-                    meta: { title: 'test1', icon: 'link' },
-                    children: [
-                        {
-                            path: 'test3',
-                            component: () => import('@/views/test2'),
-                            name: 'test3',
-                            meta: {
-                                title: 'test3',
-                                icon: 'link',
-                                activeMenu: '/test1'
-                            },
-                            hidden: true
-                        }
-                    ]
+                    path: 'dashboard',
+                    component: () => import('@/views/dashboard'),
+                    name: 'dashboard',
+                    meta: { title: 'dashboard', icon: 'link' }
+                    // children: [
+                    //         {
+                    //             path: 'test3',
+                    //             component: () => import('@/views/test2'),
+                    //             name: 'test3',
+                    //             meta: {
+                    //                 title: 'test3',
+                    //                 icon: 'link',
+                    //                 activeMenu: '/dashboard'
+                    //             },
+                    //             hidden: true
+                    //         }
+                    //     ]
                 },
                 {
-                    path: 'test2',
-                    component: () => import('@/views/test2'),
-                    name: 'test2',
-                    meta: { title: 'test2', icon: 'link' }
+                    path: 'data-manage',
+                    component: () => import('@/views/data-manage'),
+                    name: 'data-manage',
+                    meta: { title: 'data-manage', icon: 'link' }
                 }
             ]
         }

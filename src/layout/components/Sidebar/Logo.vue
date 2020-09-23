@@ -1,6 +1,6 @@
 <template>
   <div class="sidebar-logo-container">
-    <div>I'm Logo</div>
+    <div>牛蒙蒙后台</div>
     <img src alt />
   </div>
 </template>
