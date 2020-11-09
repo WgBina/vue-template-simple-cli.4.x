@@ -13,14 +13,14 @@
         :router="true"
         mode="vertical"
       >
-        <el-menu-item index="/test1">
+        <el-menu-item index="/dashboard">
           <i class="el-icon-menu" />
-          <span slot="title">导航一</span>
+          <span slot="title">数据报表</span>
         </el-menu-item>
 
-        <el-menu-item index="/test2">
-          <i class="el-icon-menu" />
-          <span slot="title">导航二</span>
+        <el-menu-item index="/data-manage">
+          <i class="el-icon-s-order" />
+          <span slot="title">订单管理</span>
         </el-menu-item>
 
       </el-menu>
